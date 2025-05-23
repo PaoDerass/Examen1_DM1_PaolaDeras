@@ -14,18 +14,18 @@ export default function Transferencias() {
 
     const { usuario, transferirDinero } = context;
 
-    const [numeroCuenta, setNumeroCuenta] = useState('');
+    const [numCuenta, setNumCuenta] = useState('');
     const [nombreDestinatario, setNombreDestinatario] = useState('');
     const [monto, setMonto] = useState('');
 
     function limpiarFormulario() {
-        setNumeroCuenta('');
+        setNumCuenta('');
         setNombreDestinatario('');
         setMonto('');
     }
 
     function manejarTransferencia() {
-        if (!numeroCuenta || !nombreDestinatario || !monto) {
+        if (!numCuenta || !nombreDestinatario || !monto) {
             Alert.alert('Error', 'Por favor completa todos los campos');
             return;
         }
@@ -37,10 +37,10 @@ export default function Transferencias() {
             return;
         }
 
-        const numeroCuentaNumerico = Number(numeroCuenta);
+        const numCuentaNumerico = Number(numCuenta);
 
 
-        const transferenciaExitosa = transferirDinero(montoNumerico, nombreDestinatario, numeroCuentaNumerico);
+        const transferenciaExitosa = transferirDinero(montoNumerico, nombreDestinatario, numCuentaNumerico);
 
         if (transferenciaExitosa) {
             Alert.alert(
@@ -66,8 +66,8 @@ export default function Transferencias() {
                 <Entrada
                     etiqueta="Número de Cuenta"
                     placeholder="Ingrese número de cuenta"
-                    valor={numeroCuenta}
-                    onChangeText={setNumeroCuenta}
+                    valor={numCuenta}
+                    onChangeText={setNumCuenta}
                     Teclado="numeric"
                 />
 
