@@ -1,10 +1,9 @@
 import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { useBancoContext } from '../Providers/BancoProvider';
+import Saldo from '../Components/Saldo';
 import Entrada from '../Components/Entrada';
 import BtnPrincipal from '../Components/BtnPrincipal';
-import Saldo from '../Components/Saldo';
-
 
 export default function Transferencias() {
     const context = useBancoContext();
@@ -38,7 +37,10 @@ export default function Transferencias() {
             return;
         }
 
-        const transferenciaExitosa = transferirDinero(montoNumerico, nombreDestinatario, numCuenta);
+        const numeroCuentaNumerico = Number(numeroCuenta);
+
+
+        const transferenciaExitosa = transferirDinero(montoNumerico, nombreDestinatario, numeroCuentaNumerico);
 
         if (transferenciaExitosa) {
             Alert.alert(
